@@ -1,0 +1,370 @@
+/* Modern, Tesla-inspired design with 3D effects */
+
+:root {
+    --primary-color: #00f2ff;
+    --secondary-color: #111;
+    --text-color: #fff;
+    --background-color: #000;
+    --accent-color: #333;
+    --gradient-1: linear-gradient(45deg, #00f2ff, #00a8ff);
+    --gradient-2: linear-gradient(135deg, #00f2ff, #0051ff);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+    perspective: 1000px;
+}
+
+/* 3D Scroll Container */
+.scroll-container {
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    perspective: 10px;
+    transform-style: preserve-3d;
+}
+
+/* Navbar with 3D hover effects */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 4rem;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    transform-style: preserve-3d;
+    transition: all 0.3s ease;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: translateZ(20px);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    padding: 0.5rem 1rem;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+    transform: translateZ(20px);
+}
+
+.nav-links a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--gradient-1);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.nav-links a:hover::before {
+    transform: scaleX(1);
+}
+
+/* Hero Section with Parallax and Stats */
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    transform-style: preserve-3d;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+                url('https://images.unsplash.com/photo-1639322537228-f710d846310a') center/cover;
+    transform: translateZ(-10px) scale(2);
+}
+
+.hero-content {
+    position: relative;
+    transform-style: preserve-3d;
+    z-index: 1;
+    margin-bottom: 4rem;
+}
+
+.hero-stats {
+    display: flex;
+    gap: 4rem;
+    margin-top: 2rem;
+    z-index: 1;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    display: block;
+}
+
+.stat-label {
+    font-size: 1rem;
+    color: var(--text-color);
+    opacity: 0.8;
+}
+
+/* Charts Grid */
+.charts-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.chart-container {
+    background: rgba(51, 51, 51, 0.8);
+    border-radius: 10px;
+    padding: 1.5rem;
+    min-height: 400px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 242, 255, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.chart-container:hover {
+    transform: translateZ(20px);
+    box-shadow: 0 0 30px rgba(0, 242, 255, 0.2);
+}
+
+/* TradingView Widget Container */
+.tradingview-widget {
+    grid-column: span 2;
+}
+
+/* Performance Metrics Chart */
+.performance-metrics {
+    position: relative;
+}
+
+/* Market Sentiment Chart */
+.market-sentiment {
+    position: relative;
+}
+
+/* Quantum Metrics Chart */
+.quantum-metrics {
+    position: relative;
+}
+
+/* About Section Enhancement */
+.quantum-stats {
+    margin-top: 3rem;
+    padding: 2rem;
+    background: rgba(51, 51, 51, 0.8);
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+}
+
+.stat-container {
+    height: 400px;
+    position: relative;
+}
+
+/* Hero CTA Button */
+.cta-button {
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    background: var(--gradient-1);
+    border: none;
+    border-radius: 5px;
+    color: var(--secondary-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    transform-style: preserve-3d;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: 0.5s;
+}
+
+.cta-button:hover {
+    transform: translateZ(20px) scale(1.05);
+    box-shadow: 0 0 20px rgba(0, 242, 255, 0.5);
+}
+
+.cta-button:hover::before {
+    left: 100%;
+}
+
+/* Feature Cards */
+.feature-card {
+    background: rgba(51, 51, 51, 0.8);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    transition: all 0.5s ease;
+    transform-style: preserve-3d;
+    position: relative;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 242, 255, 0.1);
+}
+
+.feature-card:hover {
+    transform: translateZ(20px) rotateX(10deg) rotateY(10deg);
+    box-shadow: 0 0 30px rgba(0, 242, 255, 0.3);
+    border-color: var(--primary-color);
+}
+
+.feature-card i {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover i {
+    transform: translateZ(30px);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .charts-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .tradingview-widget {
+        grid-column: span 1;
+    }
+
+    .hero-stats {
+        flex-direction: column;
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 1rem;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .charts-grid {
+        padding: 1rem;
+    }
+
+    .chart-container {
+        min-height: 300px;
+    }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--background-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--gradient-1);
+}
+
+/* Performance Optimizations */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .navbar,
+    .hero::before,
+    .floating-element,
+    .card-glow {
+        display: none;
+    }
+
+    body {
+        background: white;
+        color: black;
+    }
+
+    .chart-container {
+        break-inside: avoid;
+        border: 1px solid #ccc;
+    }
+}
